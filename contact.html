@@ -30,7 +30,7 @@
                 </a>
 
                 <!-- Desktop Nav -->
-                <nav class="hidden lg:flex space-x-8 items-center">
+                <nav class="hidden xl:flex space-x-8 items-center">
                     <a href="index.html" class="text-theme-text hover:text-primary transition-colors">Home</a>
                     <a href="home-2.html" class="text-theme-text hover:text-primary transition-colors">Home 2</a>
                     <a href="about.html" class="text-theme-text hover:text-primary transition-colors">About</a>
@@ -42,18 +42,18 @@
                 </nav>
 
                 <!-- Actions -->
-                <div class="hidden lg:flex items-center gap-4">
-                    <a href="signup.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-full font-medium transition-all text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5">Sign Up</a>
-                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle Theme">
-                        <i id="theme-icon" data-lucide="moon" class="w-5 h-5 text-theme-text"></i>
-                    </button>
+                <div class="hidden xl:flex items-center gap-4">
                     <button id="rtl-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle RTL">
                         <i id="rtl-icon" data-lucide="arrow-right-left" class="w-5 h-5 text-theme-text"></i>
                     </button>
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle Theme">
+                        <i id="theme-icon" data-lucide="moon" class="w-5 h-5 text-theme-text"></i>
+                    </button>
+                    <a href="signup.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-full font-medium transition-all text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5">Sign Up</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <div class="lg:hidden flex items-center gap-2">
+                <div class="xl:hidden flex items-center gap-2">
                     <button id="mobile-menu-btn" class="p-2 text-theme-text">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
@@ -62,7 +62,7 @@
         </div>
 
         <!-- Mobile Nav (hidden by default) -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-theme-card border-b border-theme-border shadow-lg absolute w-full left-0">
+        <div id="mobile-menu" class="hidden xl:hidden bg-theme-card border-b border-theme-border shadow-lg absolute w-full left-0">
             <div class="px-4 pt-2 pb-6 space-y-3">
                 <a href="index.html" class="block text-primary font-medium py-2">Home</a>
                 <a href="home-2.html" class="block text-theme-text py-2">Home 2</a>
@@ -97,14 +97,14 @@
             </div>
             <div class="max-w-3xl mx-auto px-4 relative z-10" data-aos="fade-down">
                 <h1 class="text-4xl md:text-5xl font-black mb-6 text-white">We'd love to hear from you.</h1>
-                <p class="text-xl text-gray-300">Whether you have a question about time credits, need technical support, or want to share a community story.</p>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Whether you have a question about time credits, need technical support, or want to share a community story.</p>
             </div>
         </section>
 
         <!-- SECTION 2: CONTACT CARDS -->
-        <section class="py-16 bg-theme">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid md:grid-cols-3 gap-8 -mt-24 relative z-10">
+        <section class="pt-16 pb-20 bg-theme">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-3 gap-6">
                     <div class="bg-theme-card border border-theme-border rounded-2xl p-8 text-center shadow-lg hover-lift" data-aos="fade-up" data-aos-delay="100">
                         <div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
                             <i data-lucide="mail" class="w-8 h-8"></i>
@@ -114,7 +114,7 @@
                         <a href="mailto:hello@timebank.local" class="text-primary font-medium hover:underline">hello@timebank.local</a>
                     </div>
                     <div class="bg-theme-card border border-theme-border rounded-2xl p-8 text-center shadow-lg hover-lift" data-aos="fade-up" data-aos-delay="200">
-                        <div class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
                             <i data-lucide="map-pin" class="w-8 h-8"></i>
                         </div>
                         <h3 class="text-lg font-bold mb-2">Visit our Hub</h3>
@@ -122,12 +122,12 @@
                         <p class="font-medium">123 Community Lane<br>Portland, OR 97204</p>
                     </div>
                     <div class="bg-theme-card border border-theme-border rounded-2xl p-8 text-center shadow-lg hover-lift" data-aos="fade-up" data-aos-delay="300">
-                        <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
                             <i data-lucide="phone" class="w-8 h-8"></i>
                         </div>
                         <h3 class="text-lg font-bold mb-2">Call Us</h3>
                         <p class="text-theme-muted mb-4">Mon-Fri from 9am to 5pm.</p>
-                        <a href="tel:+15551234567" class="text-purple-600 font-medium hover:underline">+1 (555) 123-4567</a>
+                        <a href="tel:+15551234567" class="text-primary font-medium hover:underline">+1 (555) 123-4567</a>
                     </div>
                 </div>
             </div>
@@ -204,17 +204,89 @@
             </div>
         </section>
 
-        <!-- SECTION 4: COMMUNITY SUPPORT / HELP -->
-        <section class="py-24 bg-theme">
+        <!-- SECTION 4: FAQ -->
+        <section class="py-24 bg-theme" id="faq">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-14" data-aos="fade-down">
+                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">
+                        <i data-lucide="help-circle" class="w-4 h-4"></i> FAQ
+                    </span>
+                    <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+                    <p class="text-theme-muted">Can't find the answer you're looking for? <a href="#contactForm" class="text-primary hover:underline">Send us a message.</a></p>
+                </div>
+
+                <div class="space-y-4" id="faq-list">
+
+                    <!-- FAQ Item 1 -->
+                    <div class="border border-theme-border rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="50">
+                        <button onclick="toggleFaq(this)" class="w-full flex justify-between items-center p-6 text-left font-semibold hover:bg-primary/5 transition-colors gap-4">
+                            <span>How do Time Credits work?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-primary shrink-0 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-theme-muted leading-relaxed">
+                            Every hour of service you provide earns you 1 Time Credit, regardless of the type of skill. You then spend those credits to receive help from other members. It's a fair, money-free economy built on trust and time.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="border border-theme-border rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                        <button onclick="toggleFaq(this)" class="w-full flex justify-between items-center p-6 text-left font-semibold hover:bg-primary/5 transition-colors gap-4">
+                            <span>Is there a membership fee to join?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-primary shrink-0 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-theme-muted leading-relaxed">
+                            No! Joining the TimeBank is completely free. When you sign up, you receive 1 complimentary Time Credit to get started. There are no hidden fees or subscriptions.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="border border-theme-border rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="150">
+                        <button onclick="toggleFaq(this)" class="w-full flex justify-between items-center p-6 text-left font-semibold hover:bg-primary/5 transition-colors gap-4">
+                            <span>How do I know I can trust other members?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-primary shrink-0 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-theme-muted leading-relaxed">
+                            Safety and trust are our top priorities. Every member is verified, and we have a community-driven review and rating system. You can always read past reviews and exchange history before connecting with a new member.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="border border-theme-border rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                        <button onclick="toggleFaq(this)" class="w-full flex justify-between items-center p-6 text-left font-semibold hover:bg-primary/5 transition-colors gap-4">
+                            <span>What types of skills can be exchanged?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-primary shrink-0 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-theme-muted leading-relaxed">
+                            Almost anything! Popular categories include tutoring, web design, home repair, cooking, pet care, gardening, language lessons, fitness coaching, and much more. If you have a skill, someone in the community likely needs it.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="border border-theme-border rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="250">
+                        <button onclick="toggleFaq(this)" class="w-full flex justify-between items-center p-6 text-left font-semibold hover:bg-primary/5 transition-colors gap-4">
+                            <span>Do Time Credits expire?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-primary shrink-0 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-theme-muted leading-relaxed">
+                            Time Credits do not expire as long as your account remains active. We encourage members to keep exchanging, but your credits are safe and always available in your wallet.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: COMMUNITY SUPPORT / HELP -->
+        <section class="py-16 bg-theme-card border-t border-theme-border">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16" data-aos="zoom-in">
+                <div class="text-center mb-12" data-aos="zoom-in">
                     <h2 class="text-2xl font-bold mb-4">Looking for immediate help?</h2>
                     <p class="text-theme-muted">Check out our community resources before reaching out.</p>
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <a href="how-it-works.html" class="flex items-center gap-6 p-6 border border-theme-border rounded-2xl hover:border-primary transition-colors group">
-                        <div class="w-12 h-12 bg-theme-card rounded-full flex items-center justify-center border border-theme-border group-hover:bg-primary group-hover:text-white transition-colors">
+                    <a href="how-it-works.html" class="flex items-center gap-6 p-6 border border-theme-border rounded-2xl hover:border-primary bg-theme transition-colors group" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-12 h-12 bg-theme-card rounded-full flex items-center justify-center border border-theme-border group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
                             <i data-lucide="help-circle" class="w-6 h-6"></i>
                         </div>
                         <div>
@@ -222,8 +294,8 @@
                             <p class="text-sm text-theme-muted">Learn exactly how the TimeBank works.</p>
                         </div>
                     </a>
-                    <a href="#" class="flex items-center gap-6 p-6 border border-theme-border rounded-2xl hover:border-primary transition-colors group">
-                        <div class="w-12 h-12 bg-theme-card rounded-full flex items-center justify-center border border-theme-border group-hover:bg-primary group-hover:text-white transition-colors">
+                    <a href="#" class="flex items-center gap-6 p-6 border border-theme-border rounded-2xl hover:border-primary bg-theme transition-colors group" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-12 h-12 bg-theme-card rounded-full flex items-center justify-center border border-theme-border group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
                             <i data-lucide="message-square" class="w-6 h-6"></i>
                         </div>
                         <div>
@@ -321,5 +393,21 @@
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/validation.js"></script>
+    <script>
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const icon = btn.querySelector('[data-lucide="chevron-down"]');
+            const isOpen = !answer.classList.contains('hidden');
+
+            // Close all others
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+            document.querySelectorAll('[data-lucide="chevron-down"]').forEach(i => i.style.transform = '');
+
+            if (!isOpen) {
+                answer.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
 </body>
 </html>
