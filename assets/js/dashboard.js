@@ -11,6 +11,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!sidebarLinks.length || !contentSections.length) return;
 
+    // Apply correct initial hidden state based on current direction (mobile only)
+    if (window.innerWidth < 1024) {
+        hideSidebar();
+    }
+
+    // RTL-aware helpers
+    function isRtl() {
+        return document.documentElement.getAttribute('dir') === 'rtl';
+    }
+    function hideSidebar() {
+        if (!sidebar) return;
+        if (isRtl()) {
+            sidebar.classList.add('translate-x-full');
+            sidebar.classList.remove('-translate-x-full');
+        } else {
+            sidebar.classList.add('-translate-x-full');
+            sidebar.classList.remove('translate-x-full');
+        }
+    }
+    function showSidebar() {
+        if (!sidebar) return;
+        sidebar.classList.remove('-translate-x-full', 'translate-x-full');
+    }
+
     // Switch tabs
     function switchTab(targetId) {
         // Update active link
@@ -34,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // Close sidebar on mobile after clicking
-        if (window.innerWidth < 1024 && sidebar) {
-            sidebar.classList.add('-translate-x-full');
+        if (window.innerWidth < 1024) {
+            hideSidebar();
         }
     }
 
@@ -55,13 +79,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile sidebar toggles
     if (sidebarToggle && sidebar) {
         sidebarToggle.addEventListener('click', () => {
-            sidebar.classList.remove('-translate-x-full');
+            showSidebar();
         });
     }
     
     if (sidebarClose && sidebar) {
         sidebarClose.addEventListener('click', () => {
-            sidebar.classList.add('-translate-x-full');
+            hideSidebar();
+        });
+    }
+
+    // Re-apply correct hidden class when RTL is toggled at runtime
+    const rtlToggle = document.getElementById('rtl-toggle');
+    if (rtlToggle) {
+        rtlToggle.addEventListener('click', () => {
+            // After RTL toggle fires (direction changes), re-hide sidebar if it's closed on mobile
+            setTimeout(() => {
+                if (window.innerWidth < 1024) {
+                    hideSidebar();
+                }
+            }, 50);
         });
     }
 });
