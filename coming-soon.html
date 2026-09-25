@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | Local Time Bank</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        tailwind.config = { darkMode: ['class', '[data-theme="dark"]'], theme: { extend: { colors: { primary: 'var(--primary-color)', 'primary-dark': 'var(--primary-dark)', secondary: 'var(--secondary-color)', theme: { bg: 'var(--bg-main)', card: 'var(--bg-card)', text: 'var(--text-main)', muted: 'var(--text-muted)', border: 'var(--border-color)', } }, fontFamily: { sans: ['Inter', 'sans-serif'], } } } }
+    </script>
+</head>
+<body class="bg-theme text-theme antialiased min-h-screen flex items-center justify-center p-4">
+    <div class="fixed top-4 right-4 flex items-center gap-2">
+        <button id="theme-toggle" class="p-2 rounded-full hover:bg-theme-card border border-theme-border transition-colors"><i id="theme-icon" data-lucide="moon" class="w-5 h-5"></i></button>
+        <button id="rtl-toggle" class="p-2 rounded-full hover:bg-theme-card border border-theme-border transition-colors"><i id="rtl-icon" data-lucide="arrow-right-left" class="w-5 h-5"></i></button>
+    </div>
+
+    <div class="text-center max-w-lg bg-theme-card border border-theme-border rounded-3xl p-12 shadow-2xl">
+        <div class="w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-8">
+            <i data-lucide="clock" class="w-10 h-10"></i>
+        </div>
+        <h1 class="text-3xl font-black mb-4">Coming Soon</h1>
+        <p class="text-theme-muted mb-8">We're working hard to bring this feature to the community. Check back later!</p>
+        
+        <form class="flex gap-2" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Notify me when it's ready" class="w-full bg-theme border border-theme-border rounded-lg px-4 py-3 focus:outline-none focus:border-primary">
+            <button type="submit" class="bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary-dark">Notify</button>
+        </form>
+
+        <a href="index.html" class="inline-block mt-8 text-primary font-medium hover:underline">Return Home</a>
+    </div>
+
+    <script src="https://unpkg.com/lucide@0.260.0"></script>
+    <script src="assets/js/theme.js"></script>
+    <script>if(typeof lucide !== 'undefined') lucide.createIcons();</script>
+</body>
+</html>

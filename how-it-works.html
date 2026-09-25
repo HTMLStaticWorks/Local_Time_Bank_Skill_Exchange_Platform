@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works | Local Time Bank</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        tailwind.config = { darkMode: ['class', '[data-theme="dark"]'], theme: { extend: { colors: { primary: 'var(--primary-color)', 'primary-dark': 'var(--primary-dark)', secondary: 'var(--secondary-color)', theme: { bg: 'var(--bg-main)', card: 'var(--bg-card)', text: 'var(--text-main)', muted: 'var(--text-muted)', border: 'var(--border-color)', } }, fontFamily: { sans: ['Inter', 'sans-serif'], } } } }
+    </script>
+</head>
+<body class="bg-theme text-theme antialiased overflow-x-hidden">
+    
+    <!-- Standard Header -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
+                        <i data-lucide="clock" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">TimeBank</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex space-x-8 items-center">
+                    <a href="index.html" class="text-theme-text hover:text-primary transition-colors">Home</a>
+                    <a href="home-2.html" class="text-theme-text hover:text-primary transition-colors">Home 2</a>
+                    <a href="about.html" class="text-theme-text hover:text-primary transition-colors">About</a>
+                    <a href="how-it-works.html" class="text-primary font-medium transition-colors">How It Works</a>
+                    <a href="browse-skills.html" class="text-theme-text hover:text-primary transition-colors">Browse Skills</a>
+                    <a href="member-stories.html" class="text-theme-text hover:text-primary transition-colors">Stories</a>
+                    <a href="contact.html" class="text-theme-text hover:text-primary transition-colors">Contact</a>
+                    <a href="dashboard.html" class="text-theme-text hover:text-primary transition-colors">Dashboard</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="signup.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-full font-medium transition-all text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5">Sign Up</a>
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle Theme">
+                        <i id="theme-icon" data-lucide="moon" class="w-5 h-5 text-theme-text"></i>
+                    </button>
+                    <button id="rtl-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle RTL">
+                        <i id="rtl-icon" data-lucide="arrow-right-left" class="w-5 h-5 text-theme-text"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center gap-2">
+                    <button id="mobile-menu-btn" class="p-2 text-theme-text">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav (hidden by default) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-theme-card border-b border-theme-border shadow-lg absolute w-full left-0">
+            <div class="px-4 pt-2 pb-6 space-y-3">
+                <a href="index.html" class="block text-primary font-medium py-2">Home</a>
+                <a href="home-2.html" class="block text-theme-text py-2">Home 2</a>
+                <a href="about.html" class="block text-theme-text py-2">About</a>
+                <a href="how-it-works.html" class="block text-theme-text py-2">How It Works</a>
+                <a href="browse-skills.html" class="block text-theme-text py-2">Browse Skills</a>
+                <a href="member-stories.html" class="block text-theme-text py-2">Stories</a>
+                <a href="contact.html" class="block text-theme-text py-2">Contact</a>
+                <a href="dashboard.html" class="block text-theme-text py-2">Dashboard</a>
+                
+                <div class="border-t border-theme-border pt-4 flex flex-col gap-3">
+                    <div class="flex justify-center gap-6 items-center pb-2">
+                        <button id="mobile-theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors bg-theme-card border border-theme-border shadow-sm" aria-label="Toggle Theme">
+                            <i id="mobile-theme-icon" data-lucide="moon" class="w-5 h-5 text-theme-text"></i>
+                        </button>
+                        <button id="mobile-rtl-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors bg-theme-card border border-theme-border shadow-sm" aria-label="Toggle RTL">
+                            <i id="mobile-rtl-icon" data-lucide="arrow-right-left" class="w-5 h-5 text-theme-text"></i>
+                        </button>
+                    </div>
+                    <a href="signup.html" class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-xl font-medium transition-colors text-center w-full shadow-sm">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- SECTION 1: HERO -->
+        <section class="py-32 relative border-b border-theme-border bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1200&auto=format&fit=crop');">
+            <div class="absolute inset-0 bg-black/60"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" data-aos="fade-up">
+                <h1 class="text-4xl lg:text-5xl font-bold mb-6 text-white">How Time Banking Works</h1>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">Discover how our community cooperative system allows you to trade your skills, earn time credits, and get the help you need without spending money.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: STEP-BY-STEP TIME CREDITS -->
+        <section class="py-24 bg-theme">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-down">
+                    <h2 class="text-3xl font-bold mb-4">The Magic of Time Credits</h2>
+                    <p class="text-theme-muted text-lg">One hour always equals one hour. Simple and fair.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-theme-card border border-theme-border p-8 rounded-3xl text-center hover-lift" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <span class="text-2xl font-bold">1</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Earn Credits</h3>
+                        <p class="text-theme-muted">For every hour you spend helping another member, one Time Credit is added to your account balance automatically.</p>
+                    </div>
+                    <div class="bg-theme-card border border-theme-border p-8 rounded-3xl text-center hover-lift relative md:-translate-y-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <span class="text-2xl font-bold">2</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Bank Your Time</h3>
+                        <p class="text-theme-muted">Your earned credits stay in your account safely until you need them. They never expire and hold their value.</p>
+                    </div>
+                    <div class="bg-theme-card border border-theme-border p-8 rounded-3xl text-center hover-lift" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <span class="text-2xl font-bold">3</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Spend Credits</h3>
+                        <p class="text-theme-muted">Use your credits to request services from other members. Pay one credit per hour of service you receive.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: OFFER OR REQUEST A SKILL (Split Workflow) -->
+        <section class="py-24 bg-theme-card border-y border-theme-border">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-16">
+                    <!-- Offer Workflow -->
+                    <div data-aos="fade-right">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center">
+                                <i data-lucide="hand-heart" class="w-6 h-6"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold">Offering a Skill</h2>
+                        </div>
+                        <ul class="space-y-6">
+                            <li class="flex gap-4">
+                                <div class="mt-1 w-8 h-8 rounded-full border-2 border-theme-border flex items-center justify-center shrink-0">1</div>
+                                <div>
+                                    <h4 class="font-bold text-base">Create a Listing</h4>
+                                    <p class="text-theme-muted">Describe what you can do and set your availability.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <div class="mt-1 w-8 h-8 rounded-full border-2 border-theme-border flex items-center justify-center shrink-0">2</div>
+                                <div>
+                                    <h4 class="font-bold text-base">Accept Requests</h4>
+                                    <p class="text-theme-muted">Review incoming requests and accept those that fit your schedule.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <div class="mt-1 w-8 h-8 rounded-full border-2 border-theme-border flex items-center justify-center shrink-0">3</div>
+                                <div>
+                                    <h4 class="font-bold text-base">Complete & Earn</h4>
+                                    <p class="text-theme-muted">Provide the service and automatically receive Time Credits.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Request Workflow -->
+                    <div data-aos="fade-left">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-12 h-12 rounded-xl bg-secondary text-white flex items-center justify-center">
+                                <i data-lucide="search" class="w-6 h-6"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold">Requesting a Skill</h2>
+                        </div>
+                        <ul class="space-y-6">
+                            <li class="flex gap-4">
+                                <div class="mt-1 w-8 h-8 rounded-full border-2 border-theme-border flex items-center justify-center shrink-0">1</div>
+                                <div>
+                                    <h4 class="font-bold text-base">Search the Directory</h4>
+                                    <p class="text-theme-muted">Find the right person for the job using filters and reviews.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <div class="mt-1 w-8 h-8 rounded-full border-2 border-theme-border flex items-center justify-center shrink-0">2</div>
+                                <div>
+                                    <h4 class="font-bold text-base">Send a Request</h4>
+                                    <p class="text-theme-muted">Message the member with details of what you need help with.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <div class="mt-1 w-8 h-8 rounded-full border-2 border-theme-border flex items-center justify-center shrink-0">3</div>
+                                <div>
+                                    <h4 class="font-bold text-base">Confirm & Transfer</h4>
+                                    <p class="text-theme-muted">Once complete, authorize the transfer of Time Credits from your account.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: BUILD YOUR COMMUNITY REPUTATION -->
+        <section class="py-24 bg-theme relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="relative order-2 lg:order-1" data-aos="zoom-out">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop" alt="Community support" class="rounded-3xl shadow-xl">
+                        <!-- Floating Reputation Card -->
+                        <div class="absolute -bottom-8 -right-8 bg-theme-card p-6 rounded-2xl shadow-2xl border border-theme-border hidden md:block w-72">
+                            <div class="flex items-center gap-3 mb-4">
+                                <img src="https://i.pravatar.cc/100?img=5" class="w-12 h-12 rounded-full">
+                                <div>
+                                    <h4 class="font-bold">Trust Score</h4>
+                                    <div class="flex text-yellow-400 text-sm"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                                </div>
+                            </div>
+                            <p class="text-sm font-medium mb-1 text-theme-muted">Hours Exchanged: 42</p>
+                            <p class="text-sm font-medium text-theme-muted">Skills Endorsed: 8</p>
+                        </div>
+                    </div>
+                    
+                    <div class="order-1 lg:order-2" data-aos="fade-left">
+                        <h2 class="text-3xl font-bold mb-6">Build Your Community Reputation</h2>
+                        <p class="text-theme-muted text-lg mb-8 leading-relaxed">
+                            Trust is the foundation of our platform. We ensure a safe and reliable environment through our robust reputation system.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base">Verified Profiles</h4>
+                                    <p class="text-theme-muted">All members verify their identity and location to ensure a trustworthy local network.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                                    <i data-lucide="message-square" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base">Member Reviews</h4>
+                                    <p class="text-theme-muted">After every exchange, both parties leave constructive feedback and star ratings.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                                    <i data-lucide="award" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base">Skill Endorsements</h4>
+                                    <p class="text-theme-muted">Members can endorse specific skills they've experienced, building your credibility.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: CTA -->
+        <section class="py-24 bg-theme-card border-t border-theme-border text-center">
+            <div class="max-w-3xl mx-auto px-4" data-aos="zoom-in">
+                <div class="w-20 h-20 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-8">
+                    <i data-lucide="rocket" class="w-10 h-10"></i>
+                </div>
+                <h2 class="text-3xl font-bold mb-6">Ready to Start Exchanging?</h2>
+                <p class="text-xl text-theme-muted mb-10">Sign up today, complete your profile, and receive 1 complimentary Time Credit to get started.</p>
+                <a href="signup.html" class="inline-block bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:-translate-y-1 transition-all">Join the Community</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Standard Footer -->
+    <footer class="bg-theme-card border-t border-theme-border pt-16 pb-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-12">
+                <div class="col-span-2 lg:col-span-2">
+                    <a href="index.html" class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white">
+                            <i data-lucide="clock" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xl font-bold">TimeBank</span>
+                    </a>
+                    <p class="text-theme-muted text-sm leading-relaxed mb-6">
+                        A community-driven cooperative platform where members exchange skills and services using time credits instead of money. Building trust, one hour at a time.
+                    </p>
+                    <div class="flex gap-4 mt-2">
+                        <a href="#" class="w-10 h-10 rounded-full bg-theme border border-theme-border flex items-center justify-center text-[#1877F2] hover:bg-[#1877F2] hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-theme border border-theme-border flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-theme border border-theme-border flex items-center justify-center text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+                </div>
+                
+                <div class="col-span-1">
+                    <h4 class="font-bold mb-4">Platform</h4>
+                    <ul class="space-y-3 text-sm text-theme-muted">
+                        <li><a href="how-it-works.html" class="hover:text-primary transition-colors">How It Works</a></li>
+                        <li><a href="browse-skills.html" class="hover:text-primary transition-colors">Browse Skills</a></li>
+                        <li><a href="login.html" class="hover:text-primary transition-colors">Post a Request</a></li>
+                        <li><a href="login.html" class="hover:text-primary transition-colors">Offer a Skill</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1">
+                    <h4 class="font-bold mb-4">Community</h4>
+                    <ul class="space-y-3 text-sm text-theme-muted">
+                        <li><a href="member-stories.html" class="hover:text-primary transition-colors">Member Stories</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Local Chapters</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Events</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Forum</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-2 lg:col-span-2">
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <p class="text-sm text-theme-muted mb-4">Get updates on new skills and community stories.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Your email address" class="w-full bg-theme border border-theme-border rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors">
+                        <button type="submit" class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-dark transition-colors">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+                        <div class="border-t border-theme-border pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-theme-muted relative">
+                <p>&copy; 2026 Local TimeBank Platform. All rights reserved.</p>
+                
+
+
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark hover:-translate-y-1 hover:shadow-xl shadow-md transition-all sm:absolute sm:-top-5 sm:right-4 group" title="Back to top">
+                    <i data-lucide="arrow-up" class="w-5 h-5 group-hover:-translate-y-1 transition-transform"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@0.260.0"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Skills | Local Time Bank</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        tailwind.config = { darkMode: ['class', '[data-theme="dark"]'], theme: { extend: { colors: { primary: 'var(--primary-color)', 'primary-dark': 'var(--primary-dark)', secondary: 'var(--secondary-color)', theme: { bg: 'var(--bg-main)', card: 'var(--bg-card)', text: 'var(--text-main)', muted: 'var(--text-muted)', border: 'var(--border-color)', } }, fontFamily: { sans: ['Inter', 'sans-serif'], } } } }
+    </script>
+</head>
+<body class="bg-theme text-theme antialiased overflow-x-hidden">
+    
+    <!-- Standard Header -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
+                        <i data-lucide="clock" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">TimeBank</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex space-x-8 items-center">
+                    <a href="index.html" class="text-theme-text hover:text-primary transition-colors">Home</a>
+                    <a href="home-2.html" class="text-theme-text hover:text-primary transition-colors">Home 2</a>
+                    <a href="about.html" class="text-theme-text hover:text-primary transition-colors">About</a>
+                    <a href="how-it-works.html" class="text-theme-text hover:text-primary transition-colors">How It Works</a>
+                    <a href="browse-skills.html" class="text-primary font-medium transition-colors">Browse Skills</a>
+                    <a href="member-stories.html" class="text-theme-text hover:text-primary transition-colors">Stories</a>
+                    <a href="contact.html" class="text-theme-text hover:text-primary transition-colors">Contact</a>
+                    <a href="dashboard.html" class="text-theme-text hover:text-primary transition-colors">Dashboard</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="signup.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-full font-medium transition-all text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5">Sign Up</a>
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle Theme">
+                        <i id="theme-icon" data-lucide="moon" class="w-5 h-5 text-theme-text"></i>
+                    </button>
+                    <button id="rtl-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle RTL">
+                        <i id="rtl-icon" data-lucide="arrow-right-left" class="w-5 h-5 text-theme-text"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center gap-2">
+                    <button id="mobile-menu-btn" class="p-2 text-theme-text">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav (hidden by default) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-theme-card border-b border-theme-border shadow-lg absolute w-full left-0">
+            <div class="px-4 pt-2 pb-6 space-y-3">
+                <a href="index.html" class="block text-primary font-medium py-2">Home</a>
+                <a href="home-2.html" class="block text-theme-text py-2">Home 2</a>
+                <a href="about.html" class="block text-theme-text py-2">About</a>
+                <a href="how-it-works.html" class="block text-theme-text py-2">How It Works</a>
+                <a href="browse-skills.html" class="block text-theme-text py-2">Browse Skills</a>
+                <a href="member-stories.html" class="block text-theme-text py-2">Stories</a>
+                <a href="contact.html" class="block text-theme-text py-2">Contact</a>
+                <a href="dashboard.html" class="block text-theme-text py-2">Dashboard</a>
+                
+                <div class="border-t border-theme-border pt-4 flex flex-col gap-3">
+                    <div class="flex justify-center gap-6 items-center pb-2">
+                        <button id="mobile-theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors bg-theme-card border border-theme-border shadow-sm" aria-label="Toggle Theme">
+                            <i id="mobile-theme-icon" data-lucide="moon" class="w-5 h-5 text-theme-text"></i>
+                        </button>
+                        <button id="mobile-rtl-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors bg-theme-card border border-theme-border shadow-sm" aria-label="Toggle RTL">
+                            <i id="mobile-rtl-icon" data-lucide="arrow-right-left" class="w-5 h-5 text-theme-text"></i>
+                        </button>
+                    </div>
+                    <a href="signup.html" class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-xl font-medium transition-colors text-center w-full shadow-sm">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- SECTION 1: SEARCH HERO -->
+        <section class="bg-primary/5 py-16 border-b border-theme-border">
+            <div class="max-w-4xl mx-auto px-4 text-center" data-aos="fade-down">
+                <h1 class="text-3xl md:text-4xl font-bold mb-6">Find the perfect skill in your community</h1>
+                <p class="text-lg text-theme-muted mb-8">Search through hundreds of verified members offering their time and expertise.</p>
+                
+                <div class="relative max-w-2xl mx-auto shadow-lg rounded-full bg-theme-card border border-theme-border flex items-center overflow-hidden">
+                    <div class="pl-6 text-theme-muted">
+                        <i data-lucide="search" class="w-6 h-6"></i>
+                    </div>
+                    <input type="text" id="skillSearch" placeholder="E.g. Web Design, Plumbing, Tutoring..." class="w-full bg-transparent border-none py-4 px-4 focus:outline-none text-theme-text placeholder-theme-muted text-lg">
+                    <button class="bg-primary text-white font-bold py-4 px-8 hover:bg-primary-dark transition-colors">Search</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: CATEGORY FILTERS -->
+        <section class="py-12 bg-theme border-b border-theme-border sticky top-20 z-40 bg-opacity-95 backdrop-blur">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto hide-scrollbar pb-2 md:pb-0">
+                        <button class="whitespace-nowrap px-4 py-2 bg-primary text-white rounded-full font-medium text-sm transition-colors">All Skills</button>
+                        <button class="whitespace-nowrap px-4 py-2 border border-theme-border text-theme-text hover:bg-theme-card rounded-full font-medium text-sm transition-colors">Home Repair</button>
+                        <button class="whitespace-nowrap px-4 py-2 border border-theme-border text-theme-text hover:bg-theme-card rounded-full font-medium text-sm transition-colors">Tutoring</button>
+                        <button class="whitespace-nowrap px-4 py-2 border border-theme-border text-theme-text hover:bg-theme-card rounded-full font-medium text-sm transition-colors">Technology</button>
+                        <button class="whitespace-nowrap px-4 py-2 border border-theme-border text-theme-text hover:bg-theme-card rounded-full font-medium text-sm transition-colors">Gardening</button>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 w-full md:w-auto">
+                        <select id="categoryFilter" class="w-full md:w-auto bg-theme-card border border-theme-border text-theme-text rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-primary">
+                            <option value="all">All Categories</option>
+                            <option value="home repair">Home Repair</option>
+                            <option value="tutoring">Tutoring</option>
+                            <option value="technology">Technology</option>
+                            <option value="design">Design</option>
+                            <option value="gardening">Gardening</option>
+                            <option value="pet care">Pet Care</option>
+                        </select>
+                        <select class="w-full md:w-auto bg-theme-card border border-theme-border text-theme-text rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-primary">
+                            <option value="newest">Sort by Newest</option>
+                            <option value="popular">Sort by Popularity</option>
+                            <option value="rating">Sort by Rating</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: FEATURED SKILL LISTINGS -->
+        <section class="py-16 bg-theme">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Empty State (Hidden by default) -->
+                <div id="emptyState" class="hidden text-center py-20">
+                    <i data-lucide="search-x" class="w-16 h-16 mx-auto text-theme-muted mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">No skills found</h3>
+                    <p class="text-theme-muted">Try adjusting your search or filters to find what you're looking for.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="skillsGrid">
+                    
+                    <!-- Skill Card 1 -->
+                    <div class="skill-card bg-theme-card rounded-2xl border border-theme-border overflow-hidden hover-lift shadow-sm flex flex-col" data-title="Professional Garden Landscaping" data-category="gardening" data-desc="I can help you design and plant a beautiful garden layout." data-aos="fade-up">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop" alt="Gardening" class="w-full h-48 object-cover">
+                        <div class="p-6 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex gap-3 items-center">
+                                    <img src="https://i.pravatar.cc/100?img=44" class="w-10 h-10 rounded-full object-cover">
+                                    <div>
+                                        <h4 class="font-bold text-sm">Sarah Jenkins</h4>
+                                        <div class="flex items-center text-theme-muted text-xs"><i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> Portland, OR</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center text-yellow-400 text-xs font-bold"><i data-lucide="star" class="w-3 h-3 fill-current mr-1"></i> 4.9 (24)</div>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Professional Garden Landscaping</h3>
+                            <p class="text-theme-muted text-sm mb-4 line-clamp-2 flex-1">I can help you design and plant a beautiful garden layout. I have 5 years of experience as a horticulturist.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-theme-border mt-auto">
+                                <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">1 Credit/hr</span>
+                                <a href="login.html" class="text-primary font-bold text-sm hover:underline flex items-center gap-1">View Skill <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Card 2 -->
+                    <div class="skill-card bg-theme-card rounded-2xl border border-theme-border overflow-hidden hover-lift shadow-sm flex flex-col" data-title="Graphic Design & Branding" data-category="design" data-desc="Need a logo or flyer? I offer professional graphic design." data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=600&auto=format&fit=crop" alt="Design" class="w-full h-48 object-cover">
+                        <div class="p-6 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex gap-3 items-center">
+                                    <img src="https://i.pravatar.cc/100?img=55" class="w-10 h-10 rounded-full object-cover">
+                                    <div>
+                                        <h4 class="font-bold text-sm">Mike Ross</h4>
+                                        <div class="flex items-center text-theme-muted text-xs"><i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> Seattle, WA</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center text-yellow-400 text-xs font-bold"><i data-lucide="star" class="w-3 h-3 fill-current mr-1"></i> 5.0 (12)</div>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Graphic Design & Branding</h3>
+                            <p class="text-theme-muted text-sm mb-4 line-clamp-2 flex-1">Need a logo or flyer? I offer professional graphic design using Adobe Illustrator and Photoshop.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-theme-border mt-auto">
+                                <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">2 Credits/hr</span>
+                                <a href="login.html" class="text-primary font-bold text-sm hover:underline flex items-center gap-1">View Skill <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Card 3 -->
+                    <div class="skill-card bg-theme-card rounded-2xl border border-theme-border overflow-hidden hover-lift shadow-sm flex flex-col" data-title="High School Math Tutoring" data-category="tutoring" data-desc="Algebra, Geometry, and Calculus help." data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=600&auto=format&fit=crop" alt="Math Tutoring" class="w-full h-48 object-cover">
+                        <div class="p-6 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex gap-3 items-center">
+                                    <img src="https://i.pravatar.cc/100?img=32" class="w-10 h-10 rounded-full object-cover">
+                                    <div>
+                                        <h4 class="font-bold text-sm">Emily Chen</h4>
+                                        <div class="flex items-center text-theme-muted text-xs"><i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> Austin, TX</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center text-yellow-400 text-xs font-bold"><i data-lucide="star" class="w-3 h-3 fill-current mr-1"></i> 4.8 (31)</div>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">High School Math Tutoring</h3>
+                            <p class="text-theme-muted text-sm mb-4 line-clamp-2 flex-1">I'm a retired teacher offering help with Algebra, Geometry, and introductory Calculus.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-theme-border mt-auto">
+                                <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">1 Credit/hr</span>
+                                <a href="login.html" class="text-primary font-bold text-sm hover:underline flex items-center gap-1">View Skill <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Card 4 -->
+                    <div class="skill-card bg-theme-card rounded-2xl border border-theme-border overflow-hidden hover-lift shadow-sm flex flex-col" data-title="Minor Plumbing & Fixes" data-category="home repair" data-desc="Leaky faucets, pipe replacements." data-aos="fade-up">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop" alt="Plumbing" class="w-full h-48 object-cover">
+                        <div class="p-6 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex gap-3 items-center">
+                                    <img src="https://i.pravatar.cc/100?img=11" class="w-10 h-10 rounded-full object-cover">
+                                    <div>
+                                        <h4 class="font-bold text-sm">David Miller</h4>
+                                        <div class="flex items-center text-theme-muted text-xs"><i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> Chicago, IL</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center text-yellow-400 text-xs font-bold"><i data-lucide="star" class="w-3 h-3 fill-current mr-1"></i> 4.9 (45)</div>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Minor Plumbing & Fixes</h3>
+                            <p class="text-theme-muted text-sm mb-4 line-clamp-2 flex-1">I can fix leaky faucets, replace small pipes, and handle general bathroom maintenance.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-theme-border mt-auto">
+                                <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">1.5 Credits/hr</span>
+                                <a href="login.html" class="text-primary font-bold text-sm hover:underline flex items-center gap-1">View Skill <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill Card 5 -->
+                    <div class="skill-card bg-theme-card rounded-2xl border border-theme-border overflow-hidden hover-lift shadow-sm flex flex-col" data-title="Basic Computer Setup" data-category="technology" data-desc="Wi-fi setup, virus removal, software updates." data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600&auto=format&fit=crop" alt="Technology" class="w-full h-48 object-cover">
+                        <div class="p-6 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex gap-3 items-center">
+                                    <img src="https://i.pravatar.cc/100?img=15" class="w-10 h-10 rounded-full object-cover">
+                                    <div>
+                                        <h4 class="font-bold text-sm">Alex Turner</h4>
+                                        <div class="flex items-center text-theme-muted text-xs"><i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> Denver, CO</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center text-yellow-400 text-xs font-bold"><i data-lucide="star" class="w-3 h-3 fill-current mr-1"></i> 5.0 (8)</div>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Basic Computer & Wi-Fi Setup</h3>
+                            <p class="text-theme-muted text-sm mb-4 line-clamp-2 flex-1">Need help setting up a router, installing software, or removing viruses? I'm your IT guy.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-theme-border mt-auto">
+                                <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">1 Credit/hr</span>
+                                <a href="login.html" class="text-primary font-bold text-sm hover:underline flex items-center gap-1">View Skill <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Card 6 -->
+                    <div class="skill-card bg-theme-card rounded-2xl border border-theme-border overflow-hidden hover-lift shadow-sm flex flex-col" data-title="Dog Walking & Pet Care" data-category="pet care" data-desc="Reliable dog walker." data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=600&auto=format&fit=crop" alt="Pet care" class="w-full h-48 object-cover">
+                        <div class="p-6 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex gap-3 items-center">
+                                    <img src="https://i.pravatar.cc/100?img=28" class="w-10 h-10 rounded-full object-cover">
+                                    <div>
+                                        <h4 class="font-bold text-sm">Jessica W.</h4>
+                                        <div class="flex items-center text-theme-muted text-xs"><i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> Boston, MA</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center text-yellow-400 text-xs font-bold"><i data-lucide="star" class="w-3 h-3 fill-current mr-1"></i> 4.7 (19)</div>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Dog Walking & Pet Sitting</h3>
+                            <p class="text-theme-muted text-sm mb-4 line-clamp-2 flex-1">I will walk your dog, feed your cats, and take good care of your furry friends while you're away.</p>
+                            <div class="flex items-center justify-between pt-4 border-t border-theme-border mt-auto">
+                                <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">1 Credit/hr</span>
+                                <a href="login.html" class="text-primary font-bold text-sm hover:underline flex items-center gap-1">View Skill <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: RECOMMENDED SKILLS -->
+        <section class="py-24 bg-theme-card border-y border-theme-border overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div class="flex justify-between items-end mb-10" data-aos="fade-right">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-2">Recommended for You</h2>
+                        <p class="text-theme-muted">Based on popularity in your area.</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-6 overflow-x-auto hide-scrollbar pb-8 snap-x">
+                    <!-- Mini Card 1 -->
+                    <div class="min-w-[280px] snap-center bg-theme border border-theme-border rounded-xl p-4 flex gap-4 items-center shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=200&auto=format&fit=crop" class="w-20 h-20 rounded-lg object-cover">
+                        <div>
+                            <h4 class="font-bold text-sm mb-1 line-clamp-1">Cooking Lessons</h4>
+                            <p class="text-xs text-theme-muted mb-2">By Maria S.</p>
+                            <span class="text-xs font-bold text-secondary">1 Credit/hr</span>
+                        </div>
+                    </div>
+                    <!-- Mini Card 2 -->
+                    <div class="min-w-[280px] snap-center bg-theme border border-theme-border rounded-xl p-4 flex gap-4 items-center shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=200&auto=format&fit=crop" class="w-20 h-20 rounded-lg object-cover">
+                        <div>
+                            <h4 class="font-bold text-sm mb-1 line-clamp-1">HTML/CSS Help</h4>
+                            <p class="text-xs text-theme-muted mb-2">By James K.</p>
+                            <span class="text-xs font-bold text-secondary">2 Credits/hr</span>
+                        </div>
+                    </div>
+                    <!-- Mini Card 3 -->
+                    <div class="min-w-[280px] snap-center bg-theme border border-theme-border rounded-xl p-4 flex gap-4 items-center shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=200&auto=format&fit=crop" class="w-20 h-20 rounded-lg object-cover">
+                        <div>
+                            <h4 class="font-bold text-sm mb-1 line-clamp-1">Personal Training</h4>
+                            <p class="text-xs text-theme-muted mb-2">By Fitness Bob</p>
+                            <span class="text-xs font-bold text-secondary">1.5 Credits/hr</span>
+                        </div>
+                    </div>
+                    <!-- Mini Card 4 -->
+                    <div class="min-w-[280px] snap-center bg-theme border border-theme-border rounded-xl p-4 flex gap-4 items-center shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=200&auto=format&fit=crop" class="w-20 h-20 rounded-lg object-cover">
+                        <div>
+                            <h4 class="font-bold text-sm mb-1 line-clamp-1">Environmental cleanup</h4>
+                            <p class="text-xs text-theme-muted mb-2">By Green Team</p>
+                            <span class="text-xs font-bold text-secondary">1 Credit/hr</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: CTA TO OFFER A SKILL -->
+        <section class="py-24 bg-theme relative" data-aos="zoom-in">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-2xl md:text-4xl font-bold mb-6">Didn't find what you need? <br>Or want to offer your own?</h2>
+                <p class="text-lg text-theme-muted mb-10">Join the community to post a specific request, or start earning Time Credits by listing your own unique skills.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="signup.html" class="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-bold shadow-lg transition-all">List a Skill</a>
+                    <a href="signup.html" class="bg-theme-card border-2 border-theme-border text-theme-text hover:border-primary px-8 py-4 rounded-full font-bold transition-all">Post a Request</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Standard Footer -->
+    <footer class="bg-theme-card border-t border-theme-border pt-16 pb-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-12">
+                <div class="col-span-2 lg:col-span-2">
+                    <a href="index.html" class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white">
+                            <i data-lucide="clock" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xl font-bold">TimeBank</span>
+                    </a>
+                    <p class="text-theme-muted text-sm leading-relaxed mb-6">
+                        A community-driven cooperative platform where members exchange skills and services using time credits instead of money. Building trust, one hour at a time.
+                    </p>
+                    <div class="flex gap-4 mt-2">
+                        <a href="#" class="w-10 h-10 rounded-full bg-theme border border-theme-border flex items-center justify-center text-[#1877F2] hover:bg-[#1877F2] hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-theme border border-theme-border flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-theme border border-theme-border flex items-center justify-center text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+                </div>
+                
+                <div class="col-span-1">
+                    <h4 class="font-bold mb-4">Platform</h4>
+                    <ul class="space-y-3 text-sm text-theme-muted">
+                        <li><a href="how-it-works.html" class="hover:text-primary transition-colors">How It Works</a></li>
+                        <li><a href="browse-skills.html" class="hover:text-primary transition-colors">Browse Skills</a></li>
+                        <li><a href="login.html" class="hover:text-primary transition-colors">Post a Request</a></li>
+                        <li><a href="login.html" class="hover:text-primary transition-colors">Offer a Skill</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1">
+                    <h4 class="font-bold mb-4">Community</h4>
+                    <ul class="space-y-3 text-sm text-theme-muted">
+                        <li><a href="member-stories.html" class="hover:text-primary transition-colors">Member Stories</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Local Chapters</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Events</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Forum</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-2 lg:col-span-2">
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <p class="text-sm text-theme-muted mb-4">Get updates on new skills and community stories.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Your email address" class="w-full bg-theme border border-theme-border rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors">
+                        <button type="submit" class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-dark transition-colors">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+                        <div class="border-t border-theme-border pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-theme-muted relative">
+                <p>&copy; 2026 Local TimeBank Platform. All rights reserved.</p>
+                
+
+
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark hover:-translate-y-1 hover:shadow-xl shadow-md transition-all sm:absolute sm:-top-5 sm:right-4 group" title="Back to top">
+                    <i data-lucide="arrow-up" class="w-5 h-5 group-hover:-translate-y-1 transition-transform"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@0.260.0"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/browse-skills.js"></script>
+</body>
+</html>
